@@ -17,7 +17,6 @@ class ServiceFactory:
         service_class = self._services.get(service_name)
         if not service_class:
             raise ValueError(f"Service '{service_name}' is not registered.")
-        
         return service_class(*args, **kwargs)
 
 

@@ -29,7 +29,6 @@ class JWTAuthService:
             "iat": int(now.timestamp()),
             "exp": int((now + datetime.timedelta(hours=1)).timestamp())
         }
-        
         return jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM)
 
     @staticmethod
