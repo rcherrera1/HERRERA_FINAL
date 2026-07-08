@@ -5,7 +5,7 @@ from typing import Dict, Optional
 
 # Extracted secret key from environment variables with a secure fallback
 SECRET_KEY = os.getenv(
-    "JWT_SECRET_KEY", 
+    "JWT_SECRET_KEY",
     "f7bca74d823e5a481c19b26d830b561c2849ef9b010f3c5b56345829a"
 )
 ALGORITHM = "HS256"

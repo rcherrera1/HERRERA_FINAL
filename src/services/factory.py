@@ -5,6 +5,7 @@ class ServiceFactory:
     """
     A Factory that handles dynamic service discovery using a registry.
     """
+
     def __init__(self) -> None:
         self._services: Dict[str, Any] = {}
 
