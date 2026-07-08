@@ -1,0 +1,24 @@
+name: CI Quality Gates
+on: [push]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-with-version: '3.11'
+          
+      - name: Install dependencies
+        run: pip install -r requirements.txt flake8 bandit pytest pytest-cov
+        
+      - name: Lint Stage (flake8)
+        run: flake8 src/
+        
+      - name: Security Stage (bandit)
+        run: bandit -r src/
+        
+      - name: Test Stage with Coverage Gate
+        run: pytest --cov=src/ --cov-fail-under=85
