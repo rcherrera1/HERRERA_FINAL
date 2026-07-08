@@ -1,10 +1,9 @@
 from typing import Any, Callable, Dict
 
+
 class ServiceFactory:
     """
     A Factory that handles dynamic service discovery using a registry.
-    This eliminates hardcoded coupling and allows new services to be
-    added without modifying this factory class.
     """
     def __init__(self) -> None:
         self._services: Dict[str, Any] = {}
@@ -19,11 +18,12 @@ class ServiceFactory:
         if not service_class:
             raise ValueError(f"Service '{service_name}' is not registered.")
         
-        # Instantiate and return the dynamically discovered service
         return service_class(*args, **kwargs)
+
 
 # Global factory instance to be used across the microservice
 service_factory = ServiceFactory()
+
 
 def register(service_name: str) -> Callable:
     """
